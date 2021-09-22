@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap');
+
+body {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    margin: 0;
+    padding: 0;
+
+}
+
+section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    padding: 100px 20vw;
+}
+
+h2:hover {
+    text-decoration: underline;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url('https://images.unsplash.com/photo-1553680528-62abdfec6544?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+  
+    /* Set a specific height */
+    min-height: 45vh;
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .parallax-sm {
+    background-image: url('https://images.unsplash.com/photo-1553680528-62abdfec6544?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+  
+    /* Set a specific height */
+    min-height: 20vh;
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+.black {
+    background: #292b2c;
+    color: #fff;
+}
+
+.content-container {
+    min-height: 80vh;
+    background: #292b2c;
+    /* color: #fff; */
+}
+
+.custom-shape-divider-bottom-1632286088 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1632286088 svg {
+    position: relative;
+    display: block;
+    width: calc(125% + 1.3px);
+    height: 100px;
+}
+
+.custom-shape-divider-bottom-1632286088 .shape-fill {
+    fill: #292B2C;
+}
+
+
+.custom-shape-divider-bottom-1632286419 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1632286419 svg {
+    position: relative;
+    display: block;
+    width: calc(125% + 1.3px);
+    height: 115px;
+}
+
+.custom-shape-divider-bottom-1632286419 .shape-fill {
+    fill: #292B2C;
+}
