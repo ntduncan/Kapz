@@ -49,6 +49,17 @@ h2:hover {
 .black {
     background: #292b2c;
     color: #fff;
+    max-height: 20vh;
+}
+
+.white {
+    background: #fff;
+    color: #111;
+    max-height: 5vh;
+}
+
+.white > * {
+    color: #111;
 }
 
 .content-container {
@@ -57,44 +68,11 @@ h2:hover {
     /* color: #fff; */
 }
 
-.custom-shape-divider-bottom-1632286088 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
+#main-title {
+    font-size: 5em;
 }
 
-.custom-shape-divider-bottom-1632286088 svg {
-    position: relative;
-    display: block;
-    width: calc(125% + 1.3px);
-    height: 100px;
-}
-
-.custom-shape-divider-bottom-1632286088 .shape-fill {
-    fill: #292B2C;
-}
-
-
-.custom-shape-divider-bottom-1632286419 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
-}
-
-.custom-shape-divider-bottom-1632286419 svg {
-    position: relative;
-    display: block;
-    width: calc(125% + 1.3px);
-    height: 115px;
-}
-
-.custom-shape-divider-bottom-1632286419 .shape-fill {
-    fill: #292B2C;
+#logo {
+    width: 2em;
+    height: auto;
 }
