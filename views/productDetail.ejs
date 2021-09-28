@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/headerTag')%>
+    <title>Kapz</title>
+</head>
+<body class='m-0 p-0 bg-dark text-light'>
+    <header class="row sticky-top">
+        <%- include("partials/nav") %>
+    </header>
+    <main class='container'>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-md-8">
+                <div class="card bg-dark text-light m-3">
+                <img src="<%=product.img%>" class="card-img-top" alt="...">
+                </div>   
+                <div class="row text-center">
+                        <h1 class='mb-3'><%=product.title%></h1>
+                    <h3 class="col">Price: $<%=product.price%> | Qty: <%=product.quantity%></h3>
+                </div>    
+                <div class="row">
+                    <h4>Product Description:</h4>
+                    <h5><%=product.description%></h5>
+                    <a class="btn btn-secondary mt-3" href='/products'>Cancel</a>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div> 
+    </main>
+</body>
+</html>
