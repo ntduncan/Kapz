@@ -13,11 +13,7 @@
             <div class="col text-center">
                 <h1>NEW PRODUCT</h1>
                 <form action="/products/add-product" method="POST">
-                    <input class="m-2" type="text" name="title" placeholder="Title"><br />
-                    <input class="m-2" type="number" name="price" placeholder="Price"><br />
-                    <input class="m-2" type="number" name="quantity" placeholder="Quantity"><br />
-                    <input class="m-2" type="text" name="img" placeholder="Image URL"><br />
-                    <textarea class="m-2" name="description" placeholder="Product Description"></textarea><br />
+                    <%- include("partials/productFormElements") %>
                     <button class="btn btn-lg btn-outline-success" type="submit">Add Product</button>
                 </form>
             </div>

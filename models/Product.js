@@ -1,10 +1,30 @@
-     class Product {
-         constructor(title, price, quantity, img) {
-             this.title = title;
-             this.price = price;
-             this.quantity = quantity;
-             this.img = img;
-         }
-     }
+const mongoose = require('mongoose');   
+   
+const Schema = mongoose.Schema;
+    
+const productSchema = new Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    quantity: {
+        type: Number,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    img: {
+        type: String,
+        required: true
+    }
+})
 
-    module.exports = Product
+const Product = mongoose.model('Product', productSchema);
+
+module.exports = Product;

@@ -1,49 +1,76 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../models/Product")
+const productController = require("../Controllers/ProductController");
 const bodyParser = require('body-parser')
-const fs = require('fs')
 
 let urlencodedParser = bodyParser.urlencoded({extended: false})
 
-let rawData = fs.readFileSync('./models/products.json');
-let products = JSON.parse(rawData); //Use js to read json objects in 
 
 router.get('/', (req, res, next) => {
-    res.render('productList', {products: products});
+    productController.getProductsFromDB()
+     .then(products => res.render('productList', {products: products}))
+     .catch(err => {console.log(err)})
 })
 
 router.get('/new-product', (req, res, next) => {
     res.render('addProduct');
 })
 
-
-router.get('/:id', (req, res, next) => {
-    const id = req.params.id;
-    let product = products.filter(product => product.id == id);
-
-    if(product.length === 1){
-        res.render('productDetail', {product: product[0]})
-    } else {
-        res.redirect('404')
-    }
-})
-
 router.post('/add-product', urlencodedParser, (req, res, next) => {
     const data = req.body;
-    const product = {
-        id: products.length,
+    
+    const product = new Product({
         title: data.title,
         price: data.price, 
         quantity: data.quantity, 
+        description: data.description,
         img: data.img, 
-        description: data.description
-    };
+    });
 
-    products.push(product);
-    fs.writeFileSync('./models/products.json', JSON.stringify(products));
+    productController.addProductToDB(product);
 
     res.redirect('/products');
+})
+
+router.delete('/:id', (req, res, next) => {
+    const id = req.params.id;
+    Product.findByIdAndDelete(id)
+    .then(() => res.json({redirect: "/products"}))
+    .catch(err => {console.log(err)})
+    
+})
+
+router.post('/:id', urlencodedParser, (req, res, next) => {
+    const id = req.params.id;
+    const data = req.body;
+    const product = {
+        title: data.title,
+        price: data.price, 
+        quantity: data.quantity, 
+        description: data.description,
+        img: data.img, 
+    };
+    
+    Product.findByIdAndUpdate(id, product)
+    .then(() => res.redirect(`/products/${id}`))
+    .catch(err => {console.log(err)})
+
+    
+})
+
+router.get('/:id', (req, res, next) => {
+    Product.findById(req.params.id)
+     .then(product => {
+         res.render('productDetail', {product: product})
+    })
+    .catch(err => {
+        if(err.statusCode === 404){
+            res.send(err)
+        } else {
+            console.log(err)
+        }
+    })
 })
 
 

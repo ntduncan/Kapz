@@ -15,18 +15,60 @@
                 <div class="card bg-dark text-light m-3">
                 <img src="<%=product.img%>" class="card-img-top" alt="...">
                 </div>   
-                <div class="row text-center">
-                        <h1 class='mb-3'><%=product.title%></h1>
+                <div class="row text-center" id="title-block">
+                    <h1 class='mb-3'><%=product.title%></h1>
                     <h3 class="col">Price: $<%=product.price%> | Qty: <%=product.quantity%></h3>
+                    
                 </div>    
                 <div class="row">
-                    <h4>Product Description:</h4>
-                    <h5><%=product.description%></h5>
+                    <div class="col" id="productInfo">
+                        <h4>Product Description:</h4>
+                        <h5><%=product.description%></h5>
+                        <a class="m-2" id="edit">Edit</a>
+                    
+                    </div>
+                    <div class="col" id="productForm" hidden>
+                        <form action="/products/<%=product.id%>" method="POST" class="text-center">
+                            <input class="m-2" type="text" name="title" placeholder="Title" value="<%=product.title%>" required><br />
+                            <input class="m-2" type="number" name="price" placeholder="Price" value="<%=product.price%>" required><br />
+                            <input class="m-2" type="number" name="quantity" placeholder="Quantity" value="<%=product.quantity%>" required><br />
+                            <input class="m-2" type="text" name="img" placeholder="Image URL" value="<%=product.img%>" required><br />
+                            <textarea class="m-2" name="description" placeholder="Product Description" required><%=product.description%></textarea><br />
+                            <button class="btn btn-success" type="submit">update</button>
+                        </form>
+                    </div>
                     <a class="btn btn-secondary mt-3" href='/products'>Cancel</a>
+                    <a class="btn btn-danger mt-3" id="delete-btn">Delete</a>
+                    
                 </div>
             </div>
-            <div class="col"></div>
+            <div class="col" >
+            </div>
         </div> 
     </main>
+    <script>
+        function callServer(method) {
+            fetch("/products/<%=product.id%>", {method: method})
+            .then(response => response.json())
+            .then(data => window.location = data.redirect)
+            .catch(err => console.log(err));
+        }
+        
+        const deleteBtn = document.getElementById("delete-btn")
+        deleteBtn.addEventListener("click", () => {callServer("DELETE")})
+
+        const form = document.getElementById("productForm")
+        const info = document.getElementById("productInfo")
+        const titleBlock = document.getElementById("title-block")
+        const editBtn = document.getElementById("edit")
+
+        editBtn.addEventListener("click", () => {
+            form.hidden = false;
+            info.hidden = true;
+            titleBlock.hidden = true;
+            
+        })
+
+    </script>
 </body>
 </html>
