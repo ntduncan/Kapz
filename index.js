@@ -18,7 +18,6 @@ app.use(cors(corsOptions));
 //Connect to MongoDB
 const username = process.env.KAPZUSERNAME;
 const password = process.env.KAPZPASSWORD;
-
 const mongoCon = process.env.mongoCon || `mongodb+srv://${username}:${password}@cluster0.vctnn.mongodb.net/cluster0?retryWrites=true&w=majority`;
 
 mongoose.connect(mongoCon, {useNewUrlParser: true, useUnifiedTopology: true})
@@ -29,6 +28,7 @@ mongoose.connect(mongoCon, {useNewUrlParser: true, useUnifiedTopology: true})
 app
  .use(express.static(__dirname + '/public'))  //static files
  .set('view engine', 'ejs');
+
 const PORT = process.env.PORT || 5000;
 
 
