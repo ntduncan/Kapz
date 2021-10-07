@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../models/Product")
-const productController = require("../controllers/ProductController");
+const productController = require("../controllers/productController");
 const bodyParser = require('body-parser')
 
 let urlencodedParser = bodyParser.urlencoded({extended: false})
