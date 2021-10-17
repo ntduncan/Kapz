@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/headerTag')%>
+    <title>Kapz</title>
+</head>
+<body class='m-0 p-0'>
+    <header class="row sticky-top">
+        <%- include("partials/nav") %>
+    </header>
+    <main>
+        <div class="parallax-sm">
+        </div>
+
+        <section class="row black">
+            <div class="col">
+                <form action="/login/add-user" method="POST">
+                    <label for="username"class="m-1">Email</label>
+                    <input type="text" name="username" required><br />
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="m-1" required><br />
+                    <label for="confirmPassword">Confrim Password</label>
+                    <input type="password" name="confirmPassword" class="m-1" required><br />
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button class="btn btn-primary" type="submit">create account</button>
+                </form>
+            </div>
+        </section>
+        <section class='parallax'></section>
+    </main>
+</body>
+</html>

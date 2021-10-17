@@ -75,3 +75,7 @@ h2:hover {
     width: 2em;
     height: auto;
 }
+
+input {
+    width: 200px;
+}

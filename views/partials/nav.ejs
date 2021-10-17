@@ -16,8 +16,18 @@
             <a class="nav-link" href="#">Kart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="products/new-product" tabindex="-1" aria-disabled="true">Add Product</a>
+            <a class="nav-link" href="/products/new-product" tabindex="-1" aria-disabled="true">Add Product</a>
           </li>
+          <% if(!isAuthenticated){ %>
+          <li class="nav-item">
+            <a class="nav-link" href="/login" tabindex="-1" aria-disabled="true">Login</a>
+          </li>
+          <% } else { %>
+          <li class="nav-item">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>"
+            <a class="nav-link" href="login/logout" tabindex="-1" aria-disabled="true">Logout</a>
+          </li>
+          <% } %>
         </ul>
       </div>
     </div>

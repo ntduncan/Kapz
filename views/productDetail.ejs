@@ -24,21 +24,26 @@
                     <div class="col" id="productInfo">
                         <h4>Product Description:</h4>
                         <h5><%=product.description%></h5>
-                        <a class="m-2" id="edit">Edit</a>
+                        <% if(auth){ %>
+                            <a class="m-2" id="edit">Edit</a>
+                        <% } %>
                     
                     </div>
+                    <% if(auth) { %>
                     <div class="col" id="productForm" hidden>
                         <form action="/products/<%=product.id%>" method="POST" class="text-center">
                             <input class="m-2" type="text" name="title" placeholder="Title" value="<%=product.title%>" required><br />
                             <input class="m-2" type="number" name="price" placeholder="Price" value="<%=product.price%>" required><br />
                             <input class="m-2" type="number" name="quantity" placeholder="Quantity" value="<%=product.quantity%>" required><br />
                             <input class="m-2" type="text" name="img" placeholder="Image URL" value="<%=product.img%>" required><br />
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                             <textarea class="m-2" name="description" placeholder="Product Description" required><%=product.description%></textarea><br />
                             <button class="btn btn-success" type="submit">update</button>
                         </form>
                     </div>
                     <a class="btn btn-secondary mt-3" href='/products'>Cancel</a>
                     <a class="btn btn-danger mt-3" id="delete-btn">Delete</a>
+                    <% } %>
                     
                 </div>
             </div>
@@ -46,6 +51,7 @@
             </div>
         </div> 
     </main>
+    <% if(auth) { %>
     <script>
         function callServer(method) {
             fetch("/products/<%=product.id%>", {method: method})
@@ -70,5 +76,7 @@
         })
 
     </script>
+    <% } %>
+
 </body>
 </html>

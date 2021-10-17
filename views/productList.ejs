@@ -27,11 +27,13 @@
                     </div>
                 </div>
                <% })%>
+               <% if(auth) { %>
                <div class="text-light m-3" style="max-width: 20rem;">
                     <a class='btn btn-lg btn-outline-light card-body w-100' href="/products/new-product">
                         <h4 class="card-title">Add New Product</h4>
                     </a>
                </div>
+               <% } %>
             </div>
        </div>
     </section>
